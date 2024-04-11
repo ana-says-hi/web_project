@@ -6,6 +6,8 @@ import { Student } from './Model/student';
 import {User} from "./Model/user";
 import {Schueler} from "./Model/schueler";
 import {Professor} from "./Model/proff";
+import {BigBoss} from "./Model/big_boss";
+import {doc} from "@angular/fire/firestore";
 
 
 const firebaseConfig = {
@@ -38,13 +40,15 @@ export class AppComponent {
 
   teacherList: Professor[] = [];
   studentList: Schueler[] = [];
-  userList:User[]=[];
+  adminList:BigBoss[]=[];
 
-
-
+  CNP: string = "";
+  password: string = "";
 
   constructor() {
-    this.getUsers();
+    this.getAdmins();
+    this.getTeachers();
+    this.getStudents();
    }
 
   // addStudent(){
@@ -65,24 +69,54 @@ export class AppComponent {
   //search thru the DB for the user and log him in
   loginUser(){
     try{
-      if(this.userList.find(user => user.cnp == '1234' && user.passwort == 'pass')){
+      if(this.adminList.find(x=>x.cnp==this.CNP && x.passwort==this.password)){
         console.log("Admin found");
         //user has admin role-> show admin page
       }
+      if(this.teacherList.find(x=>x.cnp==this.CNP && x.passwort==this.password)){
+        console.log("Teacher found");
+        //user has teacher role-> show teacher page
+      }
+      if(this.studentList.find(x=>x.cnp==this.CNP && x.passwort==this.password)){
+        console.log("Student found");
+        //user has student role-> show student page
+      }
     }
     catch(e){
-
+      console.log("Failed the login attempt!");
     }
-    console.log("Login user");
+
   }
 
-  getUsers(){
-    const querySnapshot = getDocs(collection(db, "users"));
+  getAdmins(){
+    const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/admins"));
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data()['cnp']}`);
-        var user = new User(doc.data()['cnp'], doc.data()['passwort']);
-        this.userList.push(user);
+        var user = new BigBoss(doc.data()['cnp'], doc.data()['passwort']);
+        this.adminList.push(user);
+      });
+    });
+  }
+
+  getTeachers(){
+    const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/teachers/"));
+    querySnapshot.then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()['cnp']}`);
+        var user = new Professor(doc.data()['cnp'], doc.data()['passwort'], doc.data()['name']);
+        this.teacherList.push(user);
+      });
+    });
+  }
+
+  getStudents(){
+    const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/students"));
+    querySnapshot.then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()['cnp']}`);
+        var user = new Schueler(doc.data()['cnp'], doc.data()['passwort'], doc.data()['name']);
+        this.studentList.push(user);
       });
     });
   }
