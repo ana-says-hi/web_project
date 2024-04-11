@@ -4,7 +4,7 @@ import {addDoc, collection, getFirestore} from "firebase/firestore";
 import {initializeApp} from "firebase/app";
 import {Professor} from "../../Model/proff";
 import {deleteDoc, doc} from "@angular/fire/firestore";
-import {FormsModule} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup, FormsModule, Validators} from "@angular/forms";
 // import {db} from "../../app.module";
 
 const firebaseConfig = {
@@ -29,8 +29,31 @@ export class AdminPageComponent {
   new_password: string = "";
   new_name: string = "";
 
-  constructor() {
+  userForm: FormGroup = this.fb.group({
+    users: this.fb.array([this.createUserGroup()])
+  });
+
+  constructor(private fb: FormBuilder) { }
+
+  // ngOnInit(): void {
+  //   this.userForm = this.fb.group({
+  //     users: this.fb.array([this.createUserGroup()])
+  //   });
+  // }
+
+  get users(): FormArray {
+    return this.userForm.get('users') as FormArray;
   }
+
+  createUserGroup(): FormGroup {
+    return this.fb.group({
+      cnp: ['', Validators.required],
+      name: ['', Validators.required],
+      position: ['student', Validators.required], // Default to student
+      subject: [''] // Only for teachers
+    });
+  }
+
 
   addStudent() {
     try {

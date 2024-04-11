@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {FormArray, FormGroup, FormsModule} from '@angular/forms';
+import {FormArray, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
@@ -36,9 +36,10 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     MatFormFieldModule,
     MatDividerModule,
     FormsModule,
+    ReactiveFormsModule,
     // FormArray,
     // FormGroup
-    ],
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
