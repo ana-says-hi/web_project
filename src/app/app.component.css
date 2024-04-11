@@ -1,0 +1,22 @@
+h1
+{
+  color:blueviolet;
+  /*text-align: center;*/
+  font-weight: bolder;
+}
+
+h2{
+  /* width: 25%; */
+  color: blueviolet;
+  font-weight: bold;
+  /*text-align: center;*/
+}
+
+hr{
+  color:darkorchid;
+}
+
+body{
+  color: darkorchid;
+  background-color: antiquewhite;
+}
