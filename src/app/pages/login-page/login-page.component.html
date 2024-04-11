@@ -1,0 +1,28 @@
+<body>
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+
+<form>
+    <h3>Login Here</h3>
+
+    <mat-form-field class="example-form-field">
+        <mat-label style="color:cornflowerblue">Personal ID</mat-label>
+        <input matInput type="text" name="CNP" [(ngModel)]="CNP">
+
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+        <mat-label style="color: cornflowerblue">Passwort</mat-label>
+        <input matInput type="password" name="password" [(ngModel)]="password">
+
+    </mat-form-field>
+
+    <button type="button" (click)="loginUser()" mat-stroked-button color="accent" style="color: cornflowerblue">Login</button>
+
+</form>
+
+<mat-divider></mat-divider>
+
+</body>
