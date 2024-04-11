@@ -1,0 +1,36 @@
+<body>
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+
+<form [formGroup]="deletion">
+    <button (click)="goAway()"> Add User</button>
+    <label>CNP</label>
+    <input formControlName="cnp">
+
+    <label>Position</label>
+    <div>
+        <div class="radio-buttons">
+            <label class="radio-label">Student</label>
+            <input type="radio" formControlName="position" value="student">
+            <label class="radio-label">Teacher</label>
+            <input type="radio" formControlName="position" value="teacher">
+        </div>
+        <div
+                *ngIf="deletion.get('position')?.value==='teacher'">
+            <button (click)="deleteProf(deletion.get('cnp')?.value)"> Delete User</button>
+        </div>
+        <div
+                *ngIf="deletion.get('position')?.value==='student'">
+            <button (click)="deleteStudent(deletion.get('cnp')?.value)"> Delete User</button>
+        </div>
+    </div>
+
+    <!--    <button type="button" (click)="deleteUser(deletion.get('cnp')?.value)" style="color: cornflowerblue">-->
+    <!--        Delete User-->
+    <!--    </button>-->
+
+</form>
+
+</body>

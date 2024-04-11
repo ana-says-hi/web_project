@@ -1,0 +1,40 @@
+<body>
+
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+
+<table >
+    <caption>Studenten</caption>
+<!--    display users in db-->
+    <tr>
+        <th>CNP</th>
+        <th>Name</th>
+    </tr>
+    <tr *ngFor="let student of studentList">
+        <td>{{student.cnp}}</td>
+        <td>{{student.name}}</td>
+    </tr>
+
+</table>
+
+<table>
+    <caption>Professoren</caption>
+    <!--    display users in db-->
+    <tr>
+        <th>CNP</th>
+        <th>Name</th>
+        <th>Fach</th>
+    </tr>
+    <tr *ngFor="let teacher of teacherList">
+        <td>{{teacher.cnp}}</td>
+        <td>{{teacher.name}}</td>
+        <td>{{teacher.fach}}</td>
+    </tr>
+
+
+
+</table>
+
+</body>
