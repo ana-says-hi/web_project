@@ -1,1 +1,8 @@
+<body>
+<div class="action-menu">
+    <button *ngFor="let action of actions" (click)="performAction(action)">
+        {{ action }}
+    </button>
+</div>
 
+</body>

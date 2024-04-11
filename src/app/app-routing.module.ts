@@ -6,6 +6,7 @@ import {ProfPageComponent} from "./pages/prof-page/prof-page.component";
 import {StudentPageComponent} from "./pages/student-page/student-page.component";
 import {AddComponent} from "./service-ish/add/add.component";
 import {DeleteComponent} from "./service-ish/delete/delete.component";
+import {DisplayComponent} from "./service-ish/display/display.component";
 
 const routes: Routes = [
   {path:'', component:LoginPageComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'student-page', component:StudentPageComponent},
   {path:'add',component:AddComponent},
   {path:'delete',component:DeleteComponent},
+  {path:'display',component:DisplayComponent}
 ];
 
 @NgModule({

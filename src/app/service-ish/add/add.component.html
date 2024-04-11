@@ -6,7 +6,7 @@
 
 
 <form [formGroup]="userForm">
-    <button (click)="goAway()"> Delete Users </button>
+<!--    <button style="color: #080710" (click)="goAway()"> Delete Users </button>-->
 
     <div formArrayName="users">
         <div *ngFor="let person of users.controls; let i = index" [formGroupName]="i">

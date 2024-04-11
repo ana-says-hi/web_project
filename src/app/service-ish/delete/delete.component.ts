@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {initializeApp} from "firebase/app";
 import {collection, getDocs, getFirestore} from "firebase/firestore";
-import {deleteDoc, doc, query, where} from "@angular/fire/firestore";
+import {deleteDoc, doc, Firestore, query, where} from "@angular/fire/firestore";
 import {FormControl, FormGroup, isFormControl} from "@angular/forms";
 import {Router} from "@angular/router";
 
@@ -37,12 +37,12 @@ export class DeleteComponent {
     }
 
     deleteStudent(studentId: string) {
-        async function deleteDocumentByFieldValue(db, collectionName, fieldName, fieldValue) {
-            const q = query(collection(db, collectionName), where(fieldName, "==", fieldValue));
+        async function deleteDocumentByFieldValue(db: Firestore, collectionName: string, fieldName: string) {
+            const q = query(collection(db, collectionName), where(fieldName, "==", studentId));
 
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
-                deleteDoc(doc(db, collectionName, doc.id));
+                //deleteDoc(doc(db, collectionName, doc.id));
             });
         }
     }

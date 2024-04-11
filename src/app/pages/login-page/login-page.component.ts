@@ -54,10 +54,11 @@ export class LoginPageComponent {
   loginUser(){
     console.log('Login attempt');
     try{
+      console.log(this.adminList);
       if(this.adminList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Admin found');
         //user has admin role-> show admin page
-        this.router.navigate(['/admin-page']);
+        this.router.navigate(['/add']);
       }
       if(this.teacherList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Teacher found');
@@ -79,8 +80,8 @@ export class LoginPageComponent {
     const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/admins/"));
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()['cnp']}`);
-        var user = new BigBoss(doc.data()['cnp'], doc.data()['password']);
+        //console.log(${doc.id} => ${doc.data()['cnp']});
+        var user = new BigBoss(doc.data()['cnp'], doc.data()['passwort']);
         this.adminList.push(user);
       });
     });
@@ -90,7 +91,7 @@ export class LoginPageComponent {
     const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/professors/"));
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()['cnp']}`);
+        //console.log(${doc.id} => ${doc.data()['cnp']});
         var user = new Professor(doc.data()['cnp'],doc.data()['passwort'], doc.data()['name'], doc.data()['fach']);
         this.teacherList.push(user);
       });
@@ -101,7 +102,7 @@ export class LoginPageComponent {
     const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/students"));
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()['cnp']}`);
+        //console.log(${doc.id} => ${doc.data()['cnp']});
         var user = new Schueler(doc.data()['cnp'],doc.data()['passwort'], doc.data()['name']);
         this.studentList.push(user);
       });
