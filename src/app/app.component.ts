@@ -5,6 +5,7 @@ import { collection, getDocs, addDoc } from "firebase/firestore";
 import { Student } from './Model/student';
 import {User} from "./Model/user";
 import {Schueler} from "./Model/schueler";
+import {Professor} from "./Model/proff";
 
 
 const firebaseConfig = {
@@ -35,7 +36,7 @@ export class AppComponent {
 
   characters: string[] = ["Sheldon", "Leonard", "Penny", "Howard", "Raj"];
 
-  teacherList: P
+  teacherList: Professor[] = [];
   studentList: Schueler[] = [];
   userList:User[]=[];
 
