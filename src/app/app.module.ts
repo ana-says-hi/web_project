@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {FormsModule} from '@angular/forms';
+import {FormArray, FormGroup, FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ProfPageComponent } from './pages/prof-page/prof-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { StudentPageComponent } from './pages/student-page/student-page.componen
     AppComponent,
     AdminPageComponent,
     ProfPageComponent,
-    StudentPageComponent
+    StudentPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,10 @@ import { StudentPageComponent } from './pages/student-page/student-page.componen
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatDividerModule
+    MatDividerModule,
+    FormsModule,
+    // FormArray,
+    // FormGroup
     ],
   providers: [],
   bootstrap: [AppComponent]
