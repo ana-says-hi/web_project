@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-import { collection, getDocs, addDoc } from "firebase/firestore";
-import {User} from "./Model/user";
-import {Schueler} from "./Model/schueler";
-import {Professor} from "./Model/proff";
-import {BigBoss} from "./Model/big_boss";
-import { Router } from '@angular/router';
-import {doc} from "@angular/fire/firestore";
 
 
 const firebaseConfig = {

@@ -1,14 +1,15 @@
 import { Person } from "./person";
 
 export class Professor extends Person{
-  faecher:String[];
+  fach:string;
 
-  constructor(cnp: string, passwort: string,name: string) {
-    super(cnp,passwort,name, "professor");
-    this.faecher = [];
+  constructor(cnp: string, password:string | "initial1234",name: string, fach: string) {
+    super(cnp,password,name, "professor");
+    this.fach = fach;
   }
 
-  addFaecher(fach:String){
-    this.faecher.push(fach);
-  }
+
+  // addFaecher(fach:String){
+  //   this.faecher.push(fach);
+  // }
 }

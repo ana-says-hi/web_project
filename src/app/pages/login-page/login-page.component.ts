@@ -42,7 +42,7 @@ export class LoginPageComponent {
   adminList:BigBoss[]=[];
 
   CNP: string = "";
-  password: string = "";
+  passwort: string = "";
 
   constructor(private router: Router){
     this.getAdmins();
@@ -54,17 +54,17 @@ export class LoginPageComponent {
   loginUser(){
     console.log('Login attempt');
     try{
-      if(this.adminList.find(x=>x.cnp==this.CNP && x.passwort==this.password)){
+      if(this.adminList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Admin found');
         //user has admin role-> show admin page
         this.router.navigate(['/admin-page']);
       }
-      if(this.teacherList.find(x=>x.cnp==this.CNP && x.passwort==this.password)){
+      if(this.teacherList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Teacher found');
         //user has teacher role-> show teacher page
         this.router.navigate(['/teacher-page']);
       }
-      if(this.studentList.find(x=>x.cnp==this.CNP && x.passwort==this.password)){
+      if(this.studentList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Student found');
         //user has student role-> show student page
         this.router.navigate(['/student-page']);
@@ -80,18 +80,18 @@ export class LoginPageComponent {
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data()['cnp']}`);
-        var user = new BigBoss(doc.data()['cnp'], doc.data()['passwort']);
+        var user = new BigBoss(doc.data()['cnp'], doc.data()['password']);
         this.adminList.push(user);
       });
     });
   }
 
   getTeachers(){
-    const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/teachers/"));
+    const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/professors/"));
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data()['cnp']}`);
-        var user = new Professor(doc.data()['cnp'], doc.data()['passwort'], doc.data()['name']);
+        var user = new Professor(doc.data()['cnp'],doc.data()['passwort'], doc.data()['name'], doc.data()['fach']);
         this.teacherList.push(user);
       });
     });
@@ -102,7 +102,7 @@ export class LoginPageComponent {
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data()['cnp']}`);
-        var user = new Schueler(doc.data()['cnp'], doc.data()['passwort'], doc.data()['name']);
+        var user = new Schueler(doc.data()['cnp'],doc.data()['passwort'], doc.data()['name']);
         this.studentList.push(user);
       });
     });

@@ -14,6 +14,9 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ProfPageComponent } from './pages/prof-page/prof-page.component';
 import { StudentPageComponent } from './pages/student-page/student-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { DisplayComponent } from './service-ish/display/display.component';
+import { AddComponent } from './service-ish/add/add.component';
+import { DeleteComponent } from './service-ish/delete/delete.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     AdminPageComponent,
     ProfPageComponent,
     StudentPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    DisplayComponent,
+    AddComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,
