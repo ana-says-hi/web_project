@@ -10,11 +10,17 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { ProfPageComponent } from './pages/prof-page/prof-page.component';
+import { StudentPageComponent } from './pages/student-page/student-page.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminPageComponent,
+    ProfPageComponent,
+    StudentPageComponent
   ],
   imports: [
     BrowserModule,
