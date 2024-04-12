@@ -62,7 +62,15 @@ export class AddComponent {
         Password: "initial1234"
       });
       docRef.then((docRef) => {
+        const gradesCollectionRef = collection(db, `/users/zYD5GFDYG1xv6uxgDEF0/students/${docRef.id}/grades`);;
+        addDoc(gradesCollectionRef, {
+          Grade: 10,
+          Subject: "Purtare"
+        });
         console.log("Document written with ID: ", docRef.id);
+      });
+      docRef.then((docRef) => {
+
       });
     } catch (e) {
       console.error("Error adding document: ", e);

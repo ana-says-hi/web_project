@@ -60,16 +60,16 @@ export class LoginPageComponent {
         //user has admin role-> show admin page
         this.router.navigate(['/admin-page']);
       }
-      if(this.teacherList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
+     else if(this.teacherList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Teacher found');
         //user has teacher role-> show teacher page
         this.router.navigate(['/teacher-page']);
       }
-      if(this.studentList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
+     else if(this.studentList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Student found');
-        //user has student role-> show student page
-        this.router.navigate(['/student-page']);
-      }
+        //let s=this.studentList.find(x=>x.cnp==this.CNP);
+        this.router.navigate(['/student-page'], { queryParams: { cnp:this.CNP, passwort: this.passwort} });
+     }
     }
     catch(e){
       console.log('Failed the login attempt!');
