@@ -58,7 +58,7 @@ export class LoginPageComponent {
       if(this.adminList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Admin found');
         //user has admin role-> show admin page
-        this.router.navigate(['/add']);
+        this.router.navigate(['/admin-page']);
       }
       if(this.teacherList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Teacher found');
@@ -92,7 +92,7 @@ export class LoginPageComponent {
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         //console.log(${doc.id} => ${doc.data()['cnp']});
-        var user = new Professor(doc.data()['cnp'],doc.data()['passwort'], doc.data()['name'], doc.data()['fach']);
+        var user = new Professor(doc.data()['CNP'],doc.data()['Password'], doc.data()['Name'], doc.data()['Fach']);
         this.teacherList.push(user);
       });
     });
@@ -103,7 +103,7 @@ export class LoginPageComponent {
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         //console.log(${doc.id} => ${doc.data()['cnp']});
-        var user = new Schueler(doc.data()['cnp'],doc.data()['passwort'], doc.data()['name']);
+        var user = new Schueler(doc.data()['CNP'],doc.data()['Password'], doc.data()['Name']);
         this.studentList.push(user);
       });
     });

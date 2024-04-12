@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {initializeApp} from "firebase/app";
 import {collection, getDocs, getFirestore} from "firebase/firestore";
 import {Professor} from "../../Model/proff";
 import {Schueler} from "../../Model/schueler";
+import {doc} from "@angular/fire/firestore";
+import {user} from "@angular/fire/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCJNB8OuoAih0qNLJjBKO0Dwn7QK6GX61A",
@@ -22,7 +24,8 @@ const db = getFirestore(app);
   templateUrl: './display.component.html',
   styleUrls: ['./display.component.css']
 })
-export class DisplayComponent {
+
+export class DisplayComponent{
   studentList: Schueler[] = [];
   teacherList: Professor[] = [];
 
@@ -35,8 +38,8 @@ export class DisplayComponent {
     const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/professors/"));
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()['cnp']}`);
-        var user = new Professor(doc.data()['cnp'],doc.data()['passwort'], doc.data()['name'], doc.data()['fach']);
+        console.log(`${doc.id} => ${doc.data()['CNP']}`);
+        var user = new Professor(doc.data()['CNP'],doc.data()['Password'], doc.data()['Name'], doc.data()['Fach']);
         this.teacherList.push(user);
       });
     });
@@ -46,10 +49,13 @@ export class DisplayComponent {
     const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/students"));
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()['cnp']}`);
-        var user = new Schueler(doc.data()['cnp'],doc.data()['passwort'], doc.data()['name']);
+        console.log(`${doc.id} => ${doc.data()['CNP']}`);
+        var user = new Schueler(doc.data()['CNP'],doc.data()['Password'], doc.data()['Name']);
         this.studentList.push(user);
       });
     });
+  }
+
+  ngOnInit(): void {
   }
 }
