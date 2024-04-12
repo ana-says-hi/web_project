@@ -68,7 +68,7 @@ export class LoginPageComponent {
      else if(this.studentList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Student found');
         //let s=this.studentList.find(x=>x.cnp==this.CNP);
-        this.router.navigate(['/student-page'], { queryParams: { cnp:this.CNP, passwort: this.passwort} });
+        this.router.navigate(['/student-page'], { queryParams: { cnp:this.CNP }});
      }
     }
     catch(e){

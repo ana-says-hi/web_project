@@ -27,6 +27,9 @@ const app = initializeApp(firebaseConfig);
 export class StudentPageComponent implements OnInit{
   cnp: string='';
   password: string='';
+  docID: string='';
+  name: string='';
+  grades: string[]=[];
 
   constructor(private route: ActivatedRoute) {}
 
@@ -35,19 +38,35 @@ export class StudentPageComponent implements OnInit{
       this.cnp = params['cnp'];
       this.password = params['password'];
     });
+    this.docID=this.getStudents();
+    // this.name=this.docID.data
   }
 
-  getStudents(){
+  getStudents(): any{
     let student: string = ''
+    //let s: Schueler;
     const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/students"));
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         //console.log(${doc.id} => ${doc.data()['cnp']});
         if(doc.data()['CNP']==this.cnp){
             student = doc.id;
+            this.name=doc.data()['Name'];
+            //s=doc.data();
           }
       });
       return student;
+    });
+  }
+
+  getGrades(): void{
+    const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/students/"+this.docID+"/grades"));
+    querySnapshot.then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        if(doc.data()['CNP']==this.cnp){
+          this.grades=doc.data()['grades'];
+        }
+      });
     });
   }
 }

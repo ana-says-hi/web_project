@@ -19,11 +19,11 @@
         </div>
         <div
                 *ngIf="deletion.get('position')?.value==='teacher'">
-            <button (click)="deleteProf(deletion.get('cnp')?.value)"> Delete User</button>
+            <button style="color: cornflowerblue" (click)="deleteProf(deletion.get('cnp')?.value)"> Delete User</button>
         </div>
         <div
                 *ngIf="deletion.get('position')?.value==='student'">
-            <button (click)="deleteStudent(deletion.get('cnp')?.value)"> Delete User</button>
+            <button style="color: cornflowerblue" (click)="deleteStudent(deletion.get('cnp')?.value)"> Delete User</button>
         </div>
     </div>
 

@@ -1,8 +1,9 @@
 <body>
+<form>
 <div class="action-menu">
-    <button *ngFor="let action of actions" (click)="performAction(action)">
+    <button style="color: cornflowerblue" *ngFor="let action of actions" (click)="performAction(action)">
         {{ action }}
     </button>
 </div>
-
+</form>
 </body>
