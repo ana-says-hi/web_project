@@ -63,7 +63,7 @@ export class LoginPageComponent {
      else if(this.teacherList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Teacher found');
         //user has teacher role-> show teacher page
-        this.router.navigate(['/teacher-page']);
+        this.router.navigate(['/prof-page']);
       }
      else if(this.studentList.find(x=>x.cnp==this.CNP && x.passwort==this.passwort)){
         console.log('Student found');

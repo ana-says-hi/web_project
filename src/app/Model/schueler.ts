@@ -7,4 +7,8 @@ export class Schueler extends Person {
     super(cnp, passwort,name,"schueler");
     this.noten = [];
   }
+
+    addGrade(grade: number): void {
+        this.noten.push(grade);
+    }
 }

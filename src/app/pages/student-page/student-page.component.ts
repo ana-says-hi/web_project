@@ -29,8 +29,8 @@ export class StudentPageComponent implements OnInit{
   password: string='';
   docID: string='';
   name: string='';
-  grades: string[]=[];
-
+  //grades: string[]=[];
+  grades: [string, string][] = [];
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -39,6 +39,7 @@ export class StudentPageComponent implements OnInit{
       this.password = params['password'];
     });
     this.docID=this.getStudents();
+    this.getGrades();
     // this.name=this.docID.data
   }
 
@@ -50,23 +51,36 @@ export class StudentPageComponent implements OnInit{
       querySnapshot.forEach((doc) => {
         //console.log(${doc.id} => ${doc.data()['cnp']});
         if(doc.data()['CNP']==this.cnp){
-            student = doc.id;
-            this.name=doc.data()['Name'];
-            //s=doc.data();
-          }
+          student = doc.id;
+          this.name=doc.data()['Name'];
+          //s=doc.data();
+        }
       });
       return student;
     });
   }
 
   getGrades(): void{
-    const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/students/"+this.docID+"/grades"));
+
+    //let s: Schueler;
+    const querySnapshot = getDocs(collection(db, "users/zYD5GFDYG1xv6uxgDEF0/students"));
     querySnapshot.then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
+        //console.log(${doc.id} => ${doc.data()['cnp']});
         if(doc.data()['CNP']==this.cnp){
-          this.grades=doc.data()['grades'];
+          console.log(doc.id);
+          const querySnapshot2 = getDocs(collection(db, `users/zYD5GFDYG1xv6uxgDEF0/students/${doc.id}/grades`));
+          querySnapshot2.then((querySnapshot2) => {
+            querySnapshot2.forEach((doc2) => {
+              //console.log(${doc2.id} => ${doc2.data()['Grade']});
+              this.grades.push([doc2.data()['Grade'], doc2.data()['Subject']]);
+            });
+          });
         }
       });
+
     });
+
+
   }
 }

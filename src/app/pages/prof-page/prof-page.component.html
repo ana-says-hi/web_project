@@ -1,1 +1,23 @@
-<p>prof-page works!</p>
+<form [formGroup]="profForm">
+    <div formArrayName="users" *ngFor="let user of users.controls; let i = index">
+        <div [formGroupName]="i">
+            <label>Name:</label>
+            <input formControlName="name">
+            <label>CNP:</label>
+            <input formControlName="cnp">
+            <label>Subject:</label>
+            <input formControlName="subject">
+            <button (click)="removeUser(i)">Remove User</button>
+
+            <div formArrayName="grades" *ngFor="let grade of getGrades(i).controls; let j = index">
+                <div [formGroupName]="j">
+                    <label>Grade:</label>
+                    <input formControlName="grade">
+                    <button (click)="removeGrade(i, j)">Remove Grade</button>
+                </div>
+            </div>
+            <button (click)="addGrade(i)">Add Grade</button>
+        </div>
+    </div>
+    <button (click)="addUser()">Add User</button>
+</form>

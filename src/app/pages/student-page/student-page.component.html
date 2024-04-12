@@ -1,14 +1,18 @@
-<h1> Hi, {{this.name}}! </h1>
+<body>
+<form>
+    <h1> Hi, {{this.name}}! </h1>
     <h3>These are your grades:</h3>
-{{this.cnp}}
 
-<table>
-    <tr>
-        <th>Subject</th>
-        <th>Grade</th>
-    </tr>
-    <tr *ngFor="let grade of grades">
-        <td>{{grade[0]}}</td>
-        <td>{{grade[1]}}</td>
-    </tr>
-</table>
+
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>Grade</th>
+        </tr>
+        <tr *ngFor="let grade of grades">
+            <td>{{grade[0]}}</td>
+            <td>{{grade[1]}}</td>
+        </tr>
+    </table>
+</form>
+</body>
