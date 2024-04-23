@@ -1,8 +1,9 @@
-# ProjektWeb
+# Online Register
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
-This project was made in less than 24 hours.
-This project represents and Online Register, a Cloud Firestore database was used.
+
+- made in less than 24 hours
+- Cloud Firestore was used
 
 ### Users
 >There are 3 types of users: administrator, teacher and student.
