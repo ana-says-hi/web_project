@@ -16,6 +16,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 #### Teacher
 >- can add and delete students
 >- add and delete grades for each student
+>- (teacher page is not complete)
 
 #### Student
 >- can only see their grades.
