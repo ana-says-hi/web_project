@@ -5,19 +5,19 @@ This project was made in less than 24 hours.
 This project represents and Online Register, a Cloud Firestore database was used.
 
 ### Users
-There are 3 types of user: administrator, teacher and student.
+>There are 3 types of user: administrator, teacher and student.
 
 #### Administrator
-The administrator can delete and add new users for teacher and students.
-When choosing to create a teacher user, a dropdown appears (for choosing a subject).
-You can only add administrators from the database.
+>The administrator can delete and add new users for teacher and students.
+>When choosing to create a teacher user, a dropdown appears (for choosing a subject).
+>You can only add administrators from the database.
 
 #### Teacher
-Teachers can add and delete students.
-They can add and delete grades for the sudents.
+>Teachers can add and delete students.
+>They can add and delete grades for the sudents.
 
 #### Student
-Students can only see their grades.
+>Students can only see their grades.
 
 ### Login form:
 ![image](https://github.com/ana-says-hi/web_project/assets/120421396/440387b8-ef3f-4d6c-9957-a613a2a858ff)
